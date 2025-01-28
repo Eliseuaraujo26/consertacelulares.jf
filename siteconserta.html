@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Conserta Celulares - Reparos rápidos e confiáveis para seu smartphone. Troca de tela, bateria, conector de carga e muito mais.">
+    <meta name="keywords" content="conserto de celulares, troca de tela, manutenção de celulares, assistência técnica">
+    <meta name="author" content="Conserta Celulares">
+    <title>Conserta Celulares - Assistência Técnica Especializada</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <style>
+        :root {
+            --primary-color: #FFD700; /* Amarelo vibrante */
+            --secondary-color: #000000; /* Preto */
+            --text-color: #ffffff;
+            --background-color: #121212;
+            --accent-color: #ffdd57;
+        }
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-family: Arial, sans-serif;
+        }
+        nav {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            padding: 20px 10px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        nav img.logo {
+            max-width: 120px;
+            margin-bottom: 15px;
+        }
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        nav ul li {
+            margin: 0 20px;
+            text-align: center;
+        }
+        nav ul li a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: var(--primary-color);
+            font-weight: bold;
+            text-decoration: none;
+        }
+        nav ul li a span {
+            font-size: 0.8rem;
+        }
+        footer {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        button, .cta-button {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            font-weight: bold;
+            border-radius: 8px;
+            padding: 12px 20px;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .cta-button:hover, button:hover {
+            background-color: var(--accent-color);
+            transform: scale(1.05);
+        }
+        .container {
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+    <script>
+        function consultarOS() {
+            let nome = document.getElementById('cliente').value.trim();
+            let numeroOS = document.getElementById('osnumber').value.trim();
+            if(nome && numeroOS){
+                let mensagem = `Olá, gostaria de saber o status da minha Ordem de Serviço. Nome: ${nome}, Número da OS: ${numeroOS}.`;
+                let url = `https://wa.me/32988160203?text=${encodeURIComponent(mensagem)}`;
+                window.open(url, '_blank');
+            } else {
+                alert('Por favor, preencha todos os campos para consultar a OS.');
+            }
+        }
+
+        function solicitarOrcamento() {
+            const nome = document.querySelector('#orcamento [name="text"]').value.trim();
+            const telefone = document.querySelector('#orcamento [name="phone"]').value.trim();
+            const marca = document.querySelector('#orcamento [name="brand"]').value.trim();
+            const modelo = document.querySelector('#orcamento [name="model"]').value.trim();
+            const problema = document.querySelector('#orcamento [name="issue"]').value.trim();
+
+            const telefoneRegex = /^[0-9]{10,11}$/;
+            if (!telefoneRegex.test(telefone)) {
+                alert('Por favor, insira um número de telefone válido.');
+                return;
+            }
+
+            if (nome && telefone && marca && modelo && problema) {
+                const mensagem = `Olá, gostaria de solicitar um orçamento para o seguinte problema: Nome: ${nome}, Telefone: ${telefone}, Marca: ${marca}, Modelo: ${modelo}, Problema: ${problema}.`;
+                const url = `https://wa.me/32988160203?text=${encodeURIComponent(mensagem)}`;
+                window.open(url, '_blank');
+            } else {
+                alert('Por favor, preencha todos os campos.');
+            }
+        }
+
+        function agendarManutencao() {
+            const nome = document.querySelector('#agendamento [name="text"]').value.trim();
+            const telefone = document.querySelector('#agendamento [name="phone"]').value.trim();
+            const data = document.querySelector('#agendamento [name="date"]').value;
+            const horario = document.querySelector('#agendamento [name="time"]').value;
+            const marca = document.querySelector('#agendamento [name="brand"]').value.trim();
+            const modelo = document.querySelector('#agendamento [name="model"]').value.trim();
+            const servico = document.querySelector('#agendamento [name="service"]').value;
+
+            const hoje = new Date();
+            hoje.setHours(0, 0, 0, 0);
+            const dataSelecionada = new Date(data);
+
+            if (dataSelecionada < hoje) {
+                alert('Por favor, selecione uma data futura.');
+                return;
+            }
+
+            const telefoneRegex = /^[0-9]{10,11}$/;
+            if (!telefoneRegex.test(telefone)) {
+                alert('Por favor, insira um número de telefone válido.');
+                return;
+            }
+
+            if (nome && telefone && data && horario && marca && modelo && servico) {
+                const mensagem = `Olá, gostaria de agendar um serviço para o meu celular com as seguintes informações: Nome: ${nome}, Telefone: ${telefone}, Data: ${data}, Horário: ${horario}, Marca: ${marca}, Modelo: ${modelo}, Tipo de Serviço: ${servico}.`;
+                const url = `https://wa.me/32988160203?text=${encodeURIComponent(mensagem)}`;
+                window.open(url, '_blank');
+            } else {
+                alert('Por favor, preencha todos os campos.');
+            }
+        }
+    </script>
+</head>
+<body>
+    <nav class="container-fluid">
+        <img src="https://i.imgur.com/TP5xHRU.jpeg" alt="Conserta Celulares" class="logo">
+        <ul>
+            <li><a href="#agendamento">Agendamento</a></li>
+            <li><a href="#orcamento">Orçamento</a></li>
+            <li><a href="#consulta">Consultar<span>OS</span></a></li>
+        </ul>
+    </nav>
+    <main class="container">
+        <div id="orcamento">
+            <section>
+                <h3>Solicite um Orçamento</h3>
+                <form class="grid">
+                    <input type="text" name="text" placeholder="Nome" required>
+                    <input type="tel" name="phone" placeholder="Telefone" required>
+                    <input type="text" name="brand" placeholder="Marca" required>
+                    <input type="text" name="model" placeholder="Modelo" required>
+                    <input type="text" name="issue" placeholder="Descreva o Problema" required>
+                    <button type="button" onclick="solicitarOrcamento()">Solicitar Orçamento</button>
+                </form>
+            </section>
+        </div>
+        <div id="consulta">
+            <section>
+                <h3>Consultar Ordem de Serviço</h3>
+                <input type="text" id="cliente" placeholder="Nome do Cliente" required>
+                <input type="text" id="osnumber" placeholder="Número da OS" required>
+                <button onclick="consultarOS()">Consultar OS</button>
+            </section>
+        </div>
+        <div id="agendamento">
+            <section>
+                <h3>Agendamento de Manutenção</h3>
+                <form class="grid">
+                    <input type="text" name="text" placeholder="Nome" required>
+                    <input type="tel" name="phone" placeholder="Telefone" required>
+                    <input type="date" name="date" required>
+                    <select name="time" required>
+                        <option value="09:00">09:00</option>
+                        <option value="10:00">10:00</option>
+                        <option value="11:00">11:00</option>
+                        <option value="13:00">13:00</option>
+                        <option value="14:00">14:00</option>
+                        <option value="15:00">15:00</option>
+                        <option value="16:00">16:00</option>
+                        <option value="17:00">17:00</option>
+                    </select>
+                    <input type="text" name="brand" placeholder="Marca" required>
+                    <input type="text" name="model" placeholder="Modelo" required>
+                    <select name="service" required>
+                        <option value="Troca de Tela">Troca de Tela</option>
+                        <option value="Substituição de Bateria">Substituição de Bateria</option>
+                        <option value="Troca de Conector de Carga">Troca de Conector de Carga</option>
+                        <option value="Outro Serviço">Outro Serviço</option>
+                    </select>
+                    <button type="button" onclick="agendarManutencao()">Agendar</button>
+                </form>
+            </section>
+        </div>
+    </main>
+    <footer class="container">
+        <p><strong>Endereços:</strong></p>
+        <ul>
+            <li><a href="https://maps.app.goo.gl/h6aYKKwTgcwrxNdv6" target="_blank">Loja 1: Rua Guimarães Júnior, 387, Nova Era 2 - Em frente à praça.</a> Tel: <a href="https://wa.me/32988160203" target="_blank">(32) 98816-0203</a></li>
+            <li><a href="https://maps.app.goo.gl/a1viZfeoaDG1xShQ7" target="_blank">Loja 2: Av. Dr. Bezerra de Menezes, 2 - Próximo ao antigo café câmara.</a> Tel: <a href="https://wa.me/32988353633" target="_blank">(32) 98835-3633</a></li>
+        </ul>
+        <small><a href="#">Termos de Uso</a> • <a href="#">Política de Privacidade</a></small>
+    </footer>
+</body>
+</html>
