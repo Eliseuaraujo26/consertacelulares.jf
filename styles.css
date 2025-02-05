@@ -1,0 +1,355 @@
+/* Classe para ocultar elementos sem ocupar espaço */
+.hidden {
+    display: none;
+  }
+  
+  /* Variáveis para cores e estilos */
+  :root {
+    --cor-primaria: #FFC107;
+    --cor-secundaria: #000;
+    --cor-fundo: #222;
+    --cor-erro: #ff6b6b;
+    --cor-feedback: #FFC107;
+    --cor-header-bg: linear-gradient(45deg, #000, #333);
+  }
+  
+  /* Reset e configurações básicas */
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--cor-secundaria);
+    color: #fff;
+    line-height: 1.6;
+    padding: 20px;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  
+  /* Cabeçalho e Navegação */
+  header {
+    text-align: center;
+    padding: 30px 20px;
+    background: var(--cor-header-bg);
+    box-shadow: 0 3px 8px rgba(0,0,0,0.6);
+    border-radius: 0 0 10px 10px;
+    margin-bottom: 40px;
+  }
+  
+  header h1 {
+    color: var(--cor-primaria);
+    font-size: 2.8em;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+  }
+  
+  nav {
+    margin-top: 10px;
+  }
+  
+  .menu-btn {
+    background-color: var(--cor-primaria);
+    color: var(--cor-secundaria);
+    border: none;
+    padding: 12px 24px;
+    margin: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    border-radius: 30px;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+  
+  .menu-btn:hover {
+    background-color: #e0a800;
+    transform: scale(1.05);
+  }
+  
+  /* Seções de Formulários */
+  .form-section {
+    background-color: var(--cor-fundo);
+    padding: 25px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  
+  .form-section:not(.hidden) {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .form-section h2 {
+    color: var(--cor-primaria);
+    margin-bottom: 20px;
+    font-size: 1.8em;
+    letter-spacing: 0.5px;
+  }
+  
+  .form-section form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-section label {
+    margin-bottom: 5px;
+    font-size: 1em;
+  }
+  
+  .form-section input {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 4px;
+    transition: box-shadow 0.3s;
+    font-size: 1em;
+  }
+  
+  .form-section input:focus {
+    outline: none;
+    box-shadow: 0 0 6px var(--cor-primaria);
+  }
+  
+  /* Mensagens de erro */
+  .error {
+    color: var(--cor-erro);
+    font-size: 0.8em;
+    margin-bottom: 10px;
+    display: none;
+  }
+  
+  /* Botões dos formulários */
+  .form-section button {
+    background-color: var(--cor-primaria);
+    color: var(--cor-secundaria);
+    padding: 12px;
+    border: none;
+    font-weight: 500;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    margin-top: 10px;
+    font-size: 1em;
+  }
+  
+  .form-section button:hover {
+    background-color: #e0a800;
+    transform: scale(1.02);
+  }
+  
+  /* Feedback de envio */
+  .feedback {
+    margin-top: 10px;
+    font-size: 0.9em;
+    color: var(--cor-feedback);
+    display: none;
+  }
+  
+  /* Spinner de carregamento */
+  .spinner {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid var(--cor-primaria);
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    animation: spin 1s linear infinite;
+    margin: 10px auto;
+    display: none;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  /* Toast Notification */
+  #toast {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--cor-primaria);
+    color: var(--cor-secundaria);
+    padding: 10px 20px;
+    border-radius: 4px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+    opacity: 0;
+    transition: opacity 0.5s;
+    z-index: 999;
+  }
+  
+  #toast.show {
+    opacity: 1;
+  }
+  
+  /* Botão Voltar ao Topo */
+  #scrollToTop {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    background-color: var(--cor-primaria);
+    color: var(--cor-secundaria);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1.5em;
+    display: none;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+    transition: background-color 0.3s;
+  }
+  
+  #scrollToTop:hover {
+    background-color: #e0a800;
+  }
+  
+  /* Seção Home */
+  .home-section {
+    background-color: var(--cor-fundo);
+    padding: 25px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+  }
+  
+  .home-section h2 {
+    color: var(--cor-primaria);
+    font-size: 2em;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+  }
+  
+  .home-section p {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+  }
+  
+  .home-section ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .home-section li {
+    font-size: 1em;
+    margin: 5px 0;
+  }
+  
+  /* Rodapé */
+  footer {
+    background-color: #111;
+    padding: 25px;
+    border-radius: 8px;
+    margin-top: 40px;
+    box-shadow: 0 -2px 6px rgba(0,0,0,0.6);
+  }
+  
+  /* Container para endereços alinhados lado a lado */
+  .enderecos-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  
+  footer h2 {
+    text-align: center;
+    margin-bottom: 15px;
+    color: var(--cor-primaria);
+    font-size: 1.8em;
+  }
+  
+  .contato-loja {
+    margin-bottom: 15px;
+    width: 45%;
+    min-width: 280px;
+  }
+  
+  .contato-loja h3 {
+    color: var(--cor-primaria);
+    margin-bottom: 5px;
+    font-size: 1.2em;
+  }
+  
+  .contato-loja a {
+    color: var(--cor-primaria);
+    text-decoration: none;
+    transition: text-decoration 0.2s;
+  }
+  
+  .contato-loja a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Animações para transição entre seções */
+  .fade-in {
+    animation: fadeIn 0.5s forwards;
+  }
+  
+  .fade-out {
+    animation: fadeOut 0.5s forwards;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+  }
+  
+  /* Experiência Mobile Aprimorada */
+  @media (max-width: 600px) {
+    .menu-btn,
+    .form-section button {
+      padding: 14px 28px;
+      font-size: 1.1em;
+    }
+    
+    .form-section input {
+      padding: 12px;
+      font-size: 1em;
+    }
+  }
+  
+  /* Efeito de toque (active state) */
+  .menu-btn:active,
+  .form-section button:active {
+    transform: scale(0.97);
+    opacity: 0.9;
+    transition: transform 0.1s, opacity 0.1s;
+  }
+  
+  /* Efeito Ripple (opcional) */
+  .button-ripple {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .button-ripple::after {
+    content: "";
+    position: absolute;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    transform: scale(0);
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.5s, opacity 1s;
+  }
+  
+  .button-ripple:active::after {
+    transform: scale(2);
+    opacity: 1;
+    transition: transform 0.5s, opacity 0.8s;
+  }
+  

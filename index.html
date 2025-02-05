@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conserta Celulares</title>
+  <meta name="description" content="Conserta Celulares – Serviço de manutenção, orçamento e agendamento para celulares.">
+  <meta name="keywords" content="conserta celulares, manutenção, orçamento, agendamento, celular">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <!-- Vincula o CSS externo -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header role="banner">
+    <h1>Conserta Celulares</h1>
+    <nav role="navigation">
+      <!-- Botões com efeito ripple -->
+      <button class="menu-btn button-ripple" data-form="consultar" aria-label="Consultar Ordem de Serviço">Consultar OS</button>
+      <button class="menu-btn button-ripple" data-form="orcamento" aria-label="Pedir Orçamento">Pedir Orçamento</button>
+      <button class="menu-btn button-ripple" data-form="manutencao" aria-label="Agendar Manutenção">Agendar Manutenção</button>
+    </nav>
+  </header>
+
+  <main role="main">
+    <!-- Seção Home padrão, exibida ao carregar a página -->
+    <section id="home" class="home-section" aria-labelledby="titulo-home">
+      <h2 id="titulo-home">Bem-vindo à Conserta Celulares</h2>
+      <p>Selecione uma das opções acima para iniciar:</p>
+      <ul>
+        <li>Consultar OS</li>
+        <li>Pedir Orçamento</li>
+        <li>Agendar Manutenção</li>
+      </ul>
+    </section>
+
+    <!-- Formulário para Consultar OS -->
+    <section id="consultar" class="form-section hidden" aria-labelledby="titulo-consultar">
+      <h2 id="titulo-consultar">Consultar OS</h2>
+      <form id="form-consultar" novalidate>
+        <label for="nome-consultar">Nome:</label>
+        <input type="text" id="nome-consultar" name="Nome" required placeholder="Seu nome">
+        <span class="error" id="error-nome-consultar"></span>
+
+        <label for="os-consultar">Número da OS:</label>
+        <input type="text" id="os-consultar" name="OS" required placeholder="Ex.: 12345">
+        <span class="error" id="error-os-consultar"></span>
+
+        <label for="telefone-consultar">Telefone:</label>
+        <input type="tel" id="telefone-consultar" name="Telefone" required placeholder="Ex.: 32999999999" pattern="\d{10,11}">
+        <span class="error" id="error-telefone-consultar"></span>
+
+        <button type="submit" class="button-ripple" aria-label="Enviar consulta">Enviar via WhatsApp</button>
+        <p class="feedback" id="feedback-consultar" aria-live="assertive"></p>
+        <div class="spinner" id="spinner-consultar"></div>
+      </form>
+    </section>
+
+    <!-- Formulário para Pedir Orçamento -->
+    <section id="orcamento" class="form-section hidden" aria-labelledby="titulo-orcamento">
+      <h2 id="titulo-orcamento">Pedir Orçamento</h2>
+      <form id="form-orcamento" novalidate>
+        <label for="nome-orcamento">Nome:</label>
+        <input type="text" id="nome-orcamento" name="Nome" required placeholder="Seu nome">
+        <span class="error" id="error-nome-orcamento"></span>
+
+        <label for="servico-orcamento">Serviço desejado:</label>
+        <input type="text" id="servico-orcamento" name="Serviço" required placeholder="Serviço que deseja">
+        <span class="error" id="error-servico-orcamento"></span>
+
+        <label for="telefone-orcamento">Telefone:</label>
+        <input type="tel" id="telefone-orcamento" name="Telefone" required placeholder="Ex.: 32999999999" pattern="\d{10,11}">
+        <span class="error" id="error-telefone-orcamento"></span>
+
+        <button type="submit" class="button-ripple" aria-label="Enviar orçamento">Enviar via WhatsApp</button>
+        <p class="feedback" id="feedback-orcamento" aria-live="assertive"></p>
+        <div class="spinner" id="spinner-orcamento"></div>
+      </form>
+    </section>
+
+    <!-- Formulário para Agendar Manutenção -->
+    <section id="manutencao" class="form-section hidden" aria-labelledby="titulo-manutencao">
+      <h2 id="titulo-manutencao">Agendar Manutenção</h2>
+      <form id="form-manutencao" novalidate>
+        <label for="nome-manutencao">Nome:</label>
+        <input type="text" id="nome-manutencao" name="Nome" required placeholder="Seu nome">
+        <span class="error" id="error-nome-manutencao"></span>
+
+        <label for="marca-aparelho">Marca do Aparelho:</label>
+        <input type="text" id="marca-aparelho" name="Marca" required placeholder="Ex.: Samsung">
+        <span class="error" id="error-marca-aparelho"></span>
+
+        <label for="modelo-aparelho">Modelo do Aparelho:</label>
+        <input type="text" id="modelo-aparelho" name="Modelo" required placeholder="Ex.: Galaxy S10">
+        <span class="error" id="error-modelo-aparelho"></span>
+
+        <label for="data-manutencao">Data da Manutenção:</label>
+        <input type="date" id="data-manutencao" name="Data" required>
+        <span class="error" id="error-data-manutencao"></span>
+
+        <label for="telefone-manutencao">Telefone:</label>
+        <input type="tel" id="telefone-manutencao" name="Telefone" required placeholder="Ex.: 32999999999" pattern="\d{10,11}">
+        <span class="error" id="error-telefone-manutencao"></span>
+
+        <button type="submit" class="button-ripple" aria-label="Enviar agendamento">Enviar via WhatsApp</button>
+        <p class="feedback" id="feedback-manutencao" aria-live="assertive"></p>
+        <div class="spinner" id="spinner-manutencao"></div>
+      </form>
+    </section>
+  </main>
+
+  <!-- Botão Voltar ao Topo -->
+  <button id="scrollToTop" aria-label="Voltar ao Topo">&#8679;</button>
+
+  <!-- Notificação Toast -->
+  <div id="toast" role="alert" aria-live="assertive"></div>
+
+  <!-- Seção de Contatos e Endereços -->
+  <footer role="contentinfo">
+    <h2>Contatos e Endereços</h2>
+    <!-- Endereços alinhados lado a lado -->
+    <div class="enderecos-container">
+      <div class="contato-loja">
+        <h3>Loja 1</h3>
+        <p>
+          Endereço:
+          <a href="https://www.google.com/maps/search/?api=1&query=Guimar%C3%A3es+Junior,+387+-+Nova+Era+2,+Juiz+de+Fora+-+MG,+36087-390" target="_blank" rel="noopener" aria-label="Ver endereço da Loja 1 no Google Maps">
+            Guimarães Junior, 387 - Nova Era 2, Juiz de Fora - MG, 36087-390
+          </a>
+        </p>
+        <p>
+          WhatsApp:
+          <a href="https://wa.me/32988160203" target="_blank" rel="noopener" aria-label="Conversar com a Loja 1 no WhatsApp">
+            32 98816-0203
+          </a>
+        </p>
+      </div>
+      <div class="contato-loja">
+        <h3>Loja 2</h3>
+        <p>
+          Endereço:
+          <a href="https://www.google.com/maps/search/?api=1&query=Av.+Dr.+Bezerra+de+Menezes,+2+-+Nova+Era,+Juiz+de+Fora+-+MG,+36087-020" target="_blank" rel="noopener" aria-label="Ver endereço da Loja 2 no Google Maps">
+            Av. Dr. Bezerra de Menezes, 2 - Nova Era, Juiz de Fora - MG, 36087-020
+          </a>
+        </p>
+        <p>
+          WhatsApp:
+          <a href="https://wa.me/32988353633" target="_blank" rel="noopener" aria-label="Conversar com a Loja 2 no WhatsApp">
+            32 98835-3633
+          </a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Carrega o JavaScript com defer para melhor performance -->
+  <script src="script.js" defer></script>
+</body>
+</html>
